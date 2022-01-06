@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynaFill.Filler", "DynaFill.Filler\DynaFill.Filler.csproj", "{2D5696F5-8146-4B4E-AF40-33D5C9F706F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynaFill.UnitTests", "DynaFill.UnitTests\DynaFill.UnitTests.csproj", "{EA87830D-3F10-43D4-BE6A-0DFEE534E775}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2D5696F5-8146-4B4E-AF40-33D5C9F706F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D5696F5-8146-4B4E-AF40-33D5C9F706F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D5696F5-8146-4B4E-AF40-33D5C9F706F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA87830D-3F10-43D4-BE6A-0DFEE534E775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA87830D-3F10-43D4-BE6A-0DFEE534E775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA87830D-3F10-43D4-BE6A-0DFEE534E775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA87830D-3F10-43D4-BE6A-0DFEE534E775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
