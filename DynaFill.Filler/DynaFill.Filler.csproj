@@ -5,4 +5,19 @@
         <Nullable>disable</Nullable>
         <ImplicitUsings>disable</ImplicitUsings>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="DataFiles\names.json" />
+      <None Remove="DataFiles\names.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="DataFiles\names.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    </ItemGroup>
 </Project>

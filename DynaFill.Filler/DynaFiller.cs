@@ -1,63 +1,70 @@
 ﻿using System;
 using System.Reflection;
+using DynaFill.Filler.Helpers;
 
 namespace DynaFill.Filler
 {
-    public class DynaFiller
+    public static class DynaFiller
     {
+        private static Random _rand = new Random();
+
         // Step 3: Create new instance of target object
-        public static object CreateTargetInstance(object target)
+        public static object CreateTargetInstance(object target, bool fillStringWithNames)
         {
             var targetType = target.GetType();
             var instance = Activator.CreateInstance(targetType);
             if (instance != null)
             {
-                _ = FillAttributes(instance);
+                _ = FillAttributes(instance, fillStringWithNames);
             }
             return instance;
         }
 
         // Step 2: Fill target model attributes
-        private static bool FillAttributes(object target)
+        private static bool FillAttributes(object target, bool generateNames)
         {
             var targetProperties = target.GetType().GetProperties();
 
-            foreach (PropertyInfo info in targetProperties)
+            foreach (PropertyInfo propInfo in targetProperties)
             {
-                switch (info.PropertyType.Name)
+                switch (propInfo.PropertyType.Name)
                 {
-                    case "Int32":
-                        info.SetValue(target, 1073741823);
-
-                        break;
-
-                    case "String":
-                        info.SetValue(target, "Mnemonic Test Text");
-
+                    case "Boolean":
+                        propInfo.SetValue(target, true);
                         break;
 
                     case "Char":
-                        info.SetValue(target, '\u2649');
+                        propInfo.SetValue(target, '\u2649');
                         break;
 
                     case "DateTime":
-                        info.SetValue(target, DateTime.Now);
+                        propInfo.SetValue(target, DateTime.Now);
                         break;
 
                     case "DateTimeOffset":
-                        info.SetValue(target, DateTimeOffset.UtcNow);
+                        propInfo.SetValue(target, DateTimeOffset.UtcNow);
                         break;
 
                     case "Decimal":
-                        info.SetValue(target, 72514264337.75315741862M);
+                        propInfo.SetValue(target, decimal.MaxValue - 1);
                         break;
 
-                    case "Boolean":
-                        info.SetValue(target, true);
-
+                    case "Int16":
+                        propInfo.SetValue(target, (Int16)_rand.Next(Int16.MaxValue - 1));
                         break;
 
-                    default:
+                    case "Int32":
+                        propInfo.SetValue(target, _rand.Next(Int32.MaxValue - 1));
+                        break;
+
+                    case "Object":
+                        propInfo.SetValue(target, new object());
+                        break;
+
+                    case "String":
+                        if (generateNames)
+                        { string randName = StringHelpers.GenerateRandomName(); propInfo.SetValue(target, randName); break; }
+                        propInfo.SetValue(target, "Mnemonic Test Text");
                         break;
                 }
             }
