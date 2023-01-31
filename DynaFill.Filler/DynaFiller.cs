@@ -6,9 +6,14 @@ namespace DynaFill.Filler
 {
     public static class DynaFiller
     {
-        private static Random _rand = new Random();
+        private static readonly Random _rand = new Random();
 
-        // Step 3: Create new instance of target object
+        /// <summary>
+        /// Create Target instance of an Object from user object type to process properties
+        /// </summary>
+        /// <param name="target">User Object instance</param>
+        /// <param name="fillStringWithNames">True generate names for string property type</param>
+        /// <returns>Object Instance</returns>
         public static object CreateTargetInstance(object target, bool fillStringWithNames)
         {
             var targetType = target.GetType();
@@ -20,7 +25,12 @@ namespace DynaFill.Filler
             return instance;
         }
 
-        // Step 2: Fill target model attributes
+        /// <summary>
+        /// Fill the target object attributes with values per property type
+        /// </summary>
+        /// <param name="target">Target Object</param>
+        /// <param name="generateNames">True generate names for string property type</param>
+        /// <returns>True if the attributes are filled, False if not all attributes fills</returns>
         private static bool FillAttributes(object target, bool generateNames)
         {
             var targetProperties = target.GetType().GetProperties();
@@ -46,15 +56,15 @@ namespace DynaFill.Filler
                         break;
 
                     case "Decimal":
-                        propInfo.SetValue(target, decimal.MaxValue - 1);
+                        propInfo.SetValue(target, decimal.MaxValue / 4);
                         break;
 
                     case "Int16":
-                        propInfo.SetValue(target, (Int16)_rand.Next(Int16.MaxValue - 1));
+                        propInfo.SetValue(target, (Int16)_rand.Next(Int16.MaxValue / 2));
                         break;
 
                     case "Int32":
-                        propInfo.SetValue(target, _rand.Next(Int32.MaxValue - 1));
+                        propInfo.SetValue(target, _rand.Next(Int32.MaxValue / 4));
                         break;
 
                     case "Object":
