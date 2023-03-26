@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
-using DynaFill.Filler.Helpers;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace DynaFill.Filler
 {
@@ -73,7 +76,7 @@ namespace DynaFill.Filler
 
                     case "String":
                         if (generateNames)
-                        { string randName = StringHelpers.GenerateRandomName(); propInfo.SetValue(target, randName); break; }
+                        { string randName = GenerateRandomName(); propInfo.SetValue(target, randName); break; }
                         propInfo.SetValue(target, "Mnemonic Test Text");
                         break;
                 }
@@ -90,6 +93,34 @@ namespace DynaFill.Filler
             }
 
             return attributesFilled;
+        }
+
+        private static string GenerateRandomName()
+        {
+            // var dataFilePath = Path.Combine(Environment.CurrentDirectory, "DataFiles", "names.json");
+            string dataFilePath = "DataFiles\\names.json";
+
+            try
+            {
+                var json = File.ReadAllText(dataFilePath);
+
+                dynamic deserialized = JsonConvert.DeserializeObject<JObject>(json);
+
+                List<string> names = new List<string>();
+                foreach (var item in deserialized["names"])
+                {
+                    names.Add(item.ToString());
+                }
+
+                Random rand = new Random();
+                string randName = new String(names[rand.Next(0, names.Count)]);
+
+                return randName;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

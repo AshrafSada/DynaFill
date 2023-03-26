@@ -7,17 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="DataFiles\names.json" />
       <None Remove="DataFiles\names.txt" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="DataFiles\names.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+      <None Update="DataFiles\names.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 </Project>
