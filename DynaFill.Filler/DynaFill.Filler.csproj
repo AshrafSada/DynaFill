@@ -4,14 +4,20 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>disable</Nullable>
         <ImplicitUsings>disable</ImplicitUsings>
+        <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+        <PackageLicenseExpression>0BSD</PackageLicenseExpression>
+        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <SignAssembly>False</SignAssembly>
+        <NeutralLanguage>en</NeutralLanguage>
+        <Authors>Ashraf Sada</Authors>
+        <Description>Dynamic random object generator for mock objects testing</Description>
+        <PackageTags>generator,mock,test</PackageTags>
+        <PackageReleaseNotes>Currently can generate all common types of .Net property for a given object,
+inlcuding human names, and department names.</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
       <None Remove="DataFiles\names.txt" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     </ItemGroup>
 
     <ItemGroup>
