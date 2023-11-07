@@ -11,7 +11,7 @@
         public string JobTitle { get; set; } = null!;
         public Department Department { get; set; } = null!;
         public decimal Salary { get; set; }
-        public byte[] Image { get; set; }
+        public byte[] Image { get; set; } = null!;
         public bool IsActive { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTimeOffset LastModied { get; set; }
