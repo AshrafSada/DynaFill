@@ -12,17 +12,34 @@
         <Authors>Ashraf Sada</Authors>
         <Description>Dynamic random object generator for mock objects testing</Description>
         <PackageTags>generator,mock,test</PackageTags>
-        <PackageReleaseNotes>Currently can generate all common types of .Net property for a given object,
+        <PackageReleaseNotes>Currently can generate all common types of .Net 7.0 property for a given object,
 inlcuding human names, and department names.</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="DataFiles\companies.json" />
+      <None Remove="DataFiles\departments.json" />
+      <None Remove="DataFiles\jobTitles.json" />
+      <None Remove="DataFiles\names.json" />
       <None Remove="DataFiles\names.txt" />
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="DataFiles\names.json">
+      <Content Include="DataFiles\companies.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
+      </Content>
+      <Content Include="DataFiles\departments.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="DataFiles\jobTitles.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <Content Include="DataFiles\names.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 </Project>
