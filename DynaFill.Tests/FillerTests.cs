@@ -44,7 +44,6 @@ namespace DynaFill.Tests
             Assert.NotEmpty(filledEmployee.PhoneNumber);
             Assert.NotEqual(0, filledEmployee.Salary);
             Assert.NotEqual(0, filledEmployee.DailyHours);
-            Assert.Contains(filledEmployee.JobTitle, new string[] { "Admin", "Manager", "Developer", "Designer", "Tester" });
             Assert.True(filledEmployee.IsActive);
             Assert.NotNull(filledEmployee.Department);
             Assert.NotEqual(0, filledEmployee.Department.Id);

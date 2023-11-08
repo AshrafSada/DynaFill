@@ -1,20 +1,10 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
-using Newtonsoft.Json;
 
 namespace DynaFill.Filler
 {
     public class GenericFiller<T> where T : class
     {
-        private const string Mneumonic = "Auto-Generated String";
-        private static readonly string pathToNames = Path.Combine(Directory.GetCurrentDirectory(), "DataFiles", "names.json");
-        private static readonly string pathToDepartments = Path.Combine(Directory.GetCurrentDirectory(), "DataFiles", "departments.json");
-        private static readonly string pathToCompanies = Path.Combine(Directory.GetCurrentDirectory(), "DataFiles", "companies.json");
-        private static readonly string pathToJobTitles = Path.Combine(Directory.GetCurrentDirectory(), "DataFiles", "jobTitles.json");
-
-        private static readonly Random rand = new Random();
-
         public bool AttributesFilled { get; private set; }
 
         public T Fill(T obj)
@@ -29,15 +19,15 @@ namespace DynaFill.Filler
                 switch (propertyType.Name)
                 {
                     case "Int64":
-                        property.SetValue(obj, rand.Next(Int32.MaxValue));
+                        property.SetValue(obj, StringGenerator.rand.Next(Int32.MaxValue));
                         break;
 
                     case "Byte":
-                        property.SetValue(obj, (byte)rand.Next(255));
+                        property.SetValue(obj, (byte)StringGenerator.rand.Next(255));
                         break;
 
                     case "Byte[]":
-                        property.SetValue(obj, new byte[] { (byte)rand.Next(255) });
+                        property.SetValue(obj, new byte[] { (byte)StringGenerator.rand.Next(255) });
                         break;
 
                     case "Guid":
@@ -55,23 +45,23 @@ namespace DynaFill.Filler
                     case "String":
                         if (property.Name == "FirstName" || property.Name == "LastName")
                         {
-                            property.SetValue(obj, GenerateRandomName());
+                            property.SetValue(obj, StringGenerator.GenerateRandomName());
                         }
                         else if (property.Name.Contains("Company"))
                         {
-                            property.SetValue(obj, GenerateCompanyName());
+                            property.SetValue(obj, StringGenerator.GenerateCompanyName());
                         }
                         else if (property.Name.Contains("Department"))
                         {
-                            property.SetValue(obj, GenerateDepartmentName());
+                            property.SetValue(obj, StringGenerator.GenerateDepartmentName());
                         }
                         else if (property.Name.Contains("JobTitle"))
                         {
-                            property.SetValue(obj, GenerateRandomJobTitle());
+                            property.SetValue(obj, StringGenerator.GenerateRandomJobTitle());
                         }
                         else
                         {
-                            property.SetValue(obj, Mneumonic);
+                            property.SetValue(obj, StringGenerator.Mneumonic);
                         }
                         break;
 
@@ -84,44 +74,44 @@ namespace DynaFill.Filler
                         break;
 
                     case "Decimal":
-                        property.SetValue(obj, (decimal)rand.NextDouble());
+                        property.SetValue(obj, (decimal)StringGenerator.rand.NextDouble());
                         break;
 
                     case "Double":
-                        property.SetValue(obj, rand.NextDouble());
+                        property.SetValue(obj, StringGenerator.rand.NextDouble());
                         break;
 
                     case "Single":
-                        property.SetValue(obj, (float)rand.NextDouble());
+                        property.SetValue(obj, (float)StringGenerator.rand.NextDouble());
                         break;
 
                     case "SByte":
-                        property.SetValue(obj, (sbyte)rand.Next(255));
+                        property.SetValue(obj, (sbyte)StringGenerator.rand.Next(255));
                         break;
 
                     case "UInt16":
-                        property.SetValue(obj, (ushort)rand.Next(65535));
+                        property.SetValue(obj, (ushort)StringGenerator.rand.Next(65535));
                         break;
 
                     case "UInt32":
-                        property.SetValue(obj, (uint)rand.Next(65535));
+                        property.SetValue(obj, (uint)StringGenerator.rand.Next(65535));
                         break;
 
                     case "UInt64":
-                        property.SetValue(obj, (ulong)rand.Next(65535));
+                        property.SetValue(obj, (ulong)StringGenerator.rand.Next(65535));
                         break;
 
                     case "Int16":
-                        property.SetValue(obj, (short)rand.Next(65535));
+                        property.SetValue(obj, (short)StringGenerator.rand.Next(65535));
                         break;
 
                     case "Int32":
-                        property.SetValue(obj, rand.Next(65535));
+                        property.SetValue(obj, StringGenerator.rand.Next(65535));
                         break;
 
                     case "Enum":
                         var enumValues = Enum.GetValues(propertyType);
-                        var enumValue = enumValues.GetValue(rand.Next(enumValues.Length));
+                        var enumValue = enumValues.GetValue(StringGenerator.rand.Next(enumValues.Length));
                         property.SetValue(obj, enumValue);
                         break;
                 }
@@ -130,58 +120,6 @@ namespace DynaFill.Filler
             AttributesFilled = properties.Any(p => p is not null);
 
             return obj;
-        }
-
-        private static string GenerateCompanyName()
-        {
-            var json = File.ReadAllText(pathToCompanies);
-            JsonSerializerSettings settings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                MissingMemberHandling = MissingMemberHandling.Ignore
-            };
-            string[] names = JsonConvert.DeserializeObject<string[]>(json, settings);
-
-            return names[rand.Next(0, names.Length)];
-        }
-
-        private static string GenerateDepartmentName()
-        {
-            var json = File.ReadAllText(pathToDepartments);
-            JsonSerializerSettings settings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                MissingMemberHandling = MissingMemberHandling.Ignore
-            };
-            string[] names = JsonConvert.DeserializeObject<string[]>(json, settings);
-
-            return names[rand.Next(0, names.Length)];
-        }
-
-        private static string GenerateRandomName()
-        {
-            var json = File.ReadAllText(pathToNames);
-            JsonSerializerSettings settings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                MissingMemberHandling = MissingMemberHandling.Ignore
-            };
-            string[] names = JsonConvert.DeserializeObject<string[]>(json, settings);
-
-            return names[rand.Next(0, names.Length)];
-        }
-
-        private static string GenerateRandomJobTitle()
-        {
-            var json = File.ReadAllText(pathToJobTitles);
-            JsonSerializerSettings settings = new JsonSerializerSettings
-            {
-                NullValueHandling = NullValueHandling.Ignore,
-                MissingMemberHandling = MissingMemberHandling.Ignore
-            };
-            string[] names = JsonConvert.DeserializeObject<string[]>(json, settings);
-
-            return names[rand.Next(0, names.Length)];
         }
     }
 }

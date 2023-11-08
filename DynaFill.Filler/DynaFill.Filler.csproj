@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -12,49 +12,18 @@
         <Authors>Ashraf Sada</Authors>
         <Description>Dynamic random object generator for mock objects testing</Description>
         <PackageTags>generator,mock,test</PackageTags>
-        <PackageReleaseNotes>Currently can generate all common types of .Net 7.0 property for a given object,
-inlcuding human names, and department names.</PackageReleaseNotes>
+        <PackageReleaseNotes>
+            Currently can generate all common types of .Net 7.0 property for a given object,
+            inlcuding human names, department names, job titles, and company names.
+        </PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
-      <None Remove="DataFiles\companies.json" />
-      <None Remove="DataFiles\departments.json" />
-      <None Remove="DataFiles\jobTitles.json" />
-      <None Remove="DataFiles\names.json" />
-      <None Remove="DataFiles\names.txt" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="DataFiles\companies.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Include="DataFiles\departments.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Include="DataFiles\jobTitles.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
-      <Content Include="DataFiles\names.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+      <Folder Include="Properties\" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Properties\Resources.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>Resources.resx</DependentUpon>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <EmbeddedResource Update="Properties\Resources.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
-    </ItemGroup>
 </Project>
