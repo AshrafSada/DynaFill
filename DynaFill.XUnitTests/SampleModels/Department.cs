@@ -1,4 +1,4 @@
-﻿namespace DynaFill.Tests
+﻿namespace DynaFill.XUnitTests.SampleModels
 {
     public class Department
     {

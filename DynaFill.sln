@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynaFill.Tests", "DynaFill.Tests\DynaFill.Tests.csproj", "{94267F8F-EA95-4958-BC12-3D92A62A069F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynaFill.XUnitTests", "DynaFill.XUnitTests\DynaFill.XUnitTests.csproj", "{CBC3A037-BDDB-4757-AF7A-BFDDBDADA475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{2D5696F5-8146-4B4E-AF40-33D5C9F706F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D5696F5-8146-4B4E-AF40-33D5C9F706F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D5696F5-8146-4B4E-AF40-33D5C9F706F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94267F8F-EA95-4958-BC12-3D92A62A069F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94267F8F-EA95-4958-BC12-3D92A62A069F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94267F8F-EA95-4958-BC12-3D92A62A069F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94267F8F-EA95-4958-BC12-3D92A62A069F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBC3A037-BDDB-4757-AF7A-BFDDBDADA475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBC3A037-BDDB-4757-AF7A-BFDDBDADA475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBC3A037-BDDB-4757-AF7A-BFDDBDADA475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBC3A037-BDDB-4757-AF7A-BFDDBDADA475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

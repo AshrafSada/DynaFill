@@ -1,8 +1,32 @@
 ﻿namespace DynaFill.Filler
 {
-    public static class PreSetData
+    internal static class PreSetData
     {
-        public static string[] GetHumanNames()
+        public static string[] GetDepartmentNames()
+        {
+            return new string[] {
+                "Accounting",
+                "Administration",
+                "Business Development",
+                "Customer Service",
+                "Engineering",
+                "Finance",
+                "Human Resources",
+                "Information Technology",
+                "Legal",
+                "Marketing",
+                "Operations",
+                "Product Management",
+                "Production",
+                "Quality Assurance",
+                "Research and Development",
+                "Sales",
+                "Support",
+                "Training",
+            };
+        }
+
+        internal static string[] GetHumanNames()
         {
             return new string[]
             {
@@ -202,7 +226,7 @@
             };
         }
 
-        public static string[] GetJobTitleNames()
+        internal static string[] GetJobTitleNames()
         {
             return new string[]
             {
@@ -254,31 +278,7 @@
             };
         }
 
-        public static string[] GetDepartmentNames()
-        {
-            return new string[] {
-                "Accounting",
-                "Administration",
-                "Business Development",
-                "Customer Service",
-                "Engineering",
-                "Finance",
-                "Human Resources",
-                "Information Technology",
-                "Legal",
-                "Marketing",
-                "Operations",
-                "Product Management",
-                "Production",
-                "Quality Assurance",
-                "Research and Development",
-                "Sales",
-                "Support",
-                "Training",
-            };
-        }
-
-        public static string[] GetCompanyNames()
+        internal static string[] GetCompanyNames()
         {
             return new string[]
             {

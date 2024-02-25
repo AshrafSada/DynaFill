@@ -1,29 +1,40 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
+        <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
         <Nullable>disable</Nullable>
         <ImplicitUsings>disable</ImplicitUsings>
         <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-        <PackageLicenseExpression>0BSD</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <SignAssembly>False</SignAssembly>
         <NeutralLanguage>en</NeutralLanguage>
         <Authors>Ashraf Sada</Authors>
-        <Description>Dynamic random object generator for mock objects testing</Description>
-        <PackageTags>generator,mock,test</PackageTags>
-        <PackageReleaseNotes>
-            Currently can generate all common types of .Net 7.0 property for a given object,
-            inlcuding human names, department names, job titles, and company names.
-        </PackageReleaseNotes>
+        <Description>DynaFill is a dynamic object filler that can be used to fill objects with dynamic data. It can be used to fill objects with random data, for mocking, testing, and more.</Description>
+        <PackageTags>generator,mock,test,filler</PackageTags>
+        <PackageReleaseNotes></PackageReleaseNotes>
+        <Title>Dynamic Object Filler</Title>
+        <Copyright>© 2024 Ashraf Sada</Copyright>
+        <PackageProjectUrl>https://github.com/AshrafSada/DynaFill</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <RepositoryUrl>https://github.com/AshrafSada/DynaFill</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <AssemblyVersion>1.0.0.1</AssemblyVersion>
+        <FileVersion>1.0.0.1</FileVersion>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <None Include="..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Properties\" />
+      <None Update="README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
     </ItemGroup>
-
 </Project>
