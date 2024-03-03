@@ -1,5 +1,11 @@
 ﻿namespace DynaFill.XUnitTests.SampleModels
 {
+    public enum Gender
+    {
+        Male,
+        Female
+    }
+
     public class Person
     {
         public int Id { get; set; }
@@ -10,6 +16,7 @@
         public DateTime BirthDate { get; set; }
         public bool IsActive { get; set; }
         public Address Address { get; set; } = null!;
+        public Gender Gender { get; set; }
     }
 
     public class Address

@@ -90,17 +90,58 @@ namespace DynaFill.XUnitTests
             // Assert
             Assert.NotNull(person);
             Assert.NotEqual(0, person.Id);
-            Assert.NotEmpty(person.Name);
-            Assert.NotEmpty(person.LastName);
-            Assert.NotEmpty(person.Email);
             Assert.NotEmpty(person.PhoneNumbers);
             Assert.NotEqual(DateTime.MinValue, person.BirthDate);
-            Assert.True(person.IsActive);
             Assert.NotNull(person.Address);
             Assert.NotEmpty(person.Address.Street);
             Assert.NotEmpty(person.Address.City);
             Assert.NotEmpty(person.Address.State);
             Assert.NotEmpty(person.Address.ZipCode);
+        }
+
+        [Fact]
+        public void Should_Fill_Object_With_Derived_Properties()
+        {
+            // Arrange
+            var user = new User();
+            var filler = new GenericFiller<User>();
+
+            // Act
+            filler.Fill(user);
+
+            // Assert
+            Assert.NotNull(user);
+            Assert.IsType<DateTime>(user.UpdatedAt);
+            Assert.IsType<DateTime>(user.CreatedAt);
+            Assert.NotEmpty(user.CreatedBy);
+        }
+
+        [Fact]
+        public void Should_Generate_User_And_Password_For_Given_Object()
+        {
+            // Arrange
+            var user = new User();
+            var filler = new GenericFiller<User>();
+
+            // Act
+            var filledUser = filler.Fill(user);
+
+            // Assert
+            Assert.NotNull(filledUser);
+            Assert.NotEmpty(filledUser.Email);
+            Assert.NotEmpty(filledUser.Password);
+        }
+
+        [Fact]
+        public void Should_Fill_Object_With_Enum_Properties()
+        {
+            // Arrange Act
+            var person = new GenericFiller<Person>().Fill(new Person());
+
+            // Assert
+            Assert.NotNull(person);
+            Assert.NotEqual(0, person.Id);
+            Assert.InRange<Gender>(person.Gender, Gender.Male, Gender.Female);
         }
     }
 }

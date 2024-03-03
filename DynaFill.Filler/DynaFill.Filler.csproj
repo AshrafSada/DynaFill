@@ -22,7 +22,7 @@
         <AssemblyVersion>1.0.0.2</AssemblyVersion>
         <FileVersion>1.0.0.2</FileVersion>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <Version>1.0.0.2</Version>
+        <Version>1.0.0.3</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -30,6 +30,10 @@
         <Pack>True</Pack>
         <PackagePath>\</PackagePath>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Pluralize.Core" Version="2.0.0.3" />
     </ItemGroup>
 
     <ItemGroup>

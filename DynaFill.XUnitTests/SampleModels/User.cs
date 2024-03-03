@@ -1,6 +1,6 @@
 ﻿namespace DynaFill.XUnitTests.SampleModels
 {
-    public class User
+    public class User : AuditModel
     {
         public Guid Id { get; set; }
         public string FirstName { get; set; } = null!;
