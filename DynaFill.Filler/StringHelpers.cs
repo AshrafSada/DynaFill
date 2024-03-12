@@ -21,7 +21,7 @@ public static class StringHelpers
             value.ToCharArray().First().ToString().ToUpperInvariant();
 
     /// <summary>
-    /// Gets the first word in an unspaced string by Case-Letter
+    /// Gets the first word in an string with no space by Case-Letter
     /// </summary>
     /// <param name="value">String to get word from</param>
     /// <returns>First word in string</returns>
@@ -115,7 +115,7 @@ public static class StringHelpers
     /// <param name="value">Plural string</param>
     /// <returns>Singular string</returns>
     public static string ToSingular(this string value) =>
-        new Pluralizer().Singularize(value);
+        new Pluralizer().Singular(value);
 
     /// <summary>
     /// Convert string to separated words
