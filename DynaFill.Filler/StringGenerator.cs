@@ -5,7 +5,7 @@ namespace DynaFill.Filler
 {
     internal static class StringGenerator
     {
-        internal const string Mneumonic = "Auto-Generated String";
+        internal const string Mnemonic = "Auto-Generated Mnemonic String";
 
         internal static readonly Random rand = new Random();
 
