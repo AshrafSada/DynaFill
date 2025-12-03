@@ -14,7 +14,7 @@
         public byte[] Image { get; set; } = null!;
         public bool IsActive { get; set; }
         public DateTime DateOfBirth { get; set; }
-        public DateTimeOffset LastModied { get; set; }
+        public DateTimeOffset LastModified { get; set; }
         public float DailyHours { get; set; }
     }
 }

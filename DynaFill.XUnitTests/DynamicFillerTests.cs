@@ -143,5 +143,6 @@ namespace DynaFill.XUnitTests
             Assert.NotEqual(0, person.Id);
             Assert.InRange<Gender>(person.Gender, Gender.Male, Gender.Female);
         }
+
     }
 }

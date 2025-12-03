@@ -73,7 +73,7 @@ namespace DynaFill.Filler
                     case "Byte":
                         property.SetValue(obj, (byte)StringGenerator.rand.Next(255));
                         break;
-
+                    // check: System.Byte[]
                     case "Byte[]":
                         property.SetValue(obj, new byte[] { (byte)StringGenerator.rand.Next(255) });
                         break;
@@ -184,6 +184,7 @@ namespace DynaFill.Filler
 
                     case "Object":
                         property.SetValue(obj, new object());
+
                         break;
                 }
             }
